@@ -6,7 +6,7 @@ Zenix is a real-time event and notification platform built with the MERN stack. 
 
 - **Frontend:** React.js, Tailwind CSS, Firebase (Realtime DB), Socket.io-client  
 - **Backend:** Node.js, Express.js, MongoDB, Socket.io  
-- **Auth:** JWT with Role-Based Access Control (Admin, Organizer, Participant)  
+- **Auth:** JWT with Role-Based Access Control (Admin, Organizer, Participant)
 - **Dev Tools:** ESLint, Prettier, Postman, Draw.io  
 - **License:** MIT
 
@@ -69,14 +69,17 @@ npm run dev
 * 🔔 Real-time notifications using Socket.io
 * 🗓️ Event scheduling and management
 * 💬 Event-specific chat with live message updates
-* 📊 Diagrams for system and database design (in `/docs`)
+* 📊 Diagrams for system and database design (in `/docs/assets`)
 * 📱 Ready for React Native extension
 
 ## 📄 Documentation
 
 See [docs/](./docs/) for:
 
-* `zenix-report.md` — full project report
+* [`REPORT.md`](./docs/REPORT.md) — full project report
+* [`MODELS.md`](./docs//MODELS.md) — all project model schema
+* [`API.md`](./docs/API.md) — complete documentation for the api
+* [`ROADMAP.md`](./docs//ROADMAP.md) — roadmap for the project
 
 ## 📜 License
 
