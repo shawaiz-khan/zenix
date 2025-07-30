@@ -4,10 +4,10 @@ Zenix is a real-time event and notification platform built with the MERN stack. 
 
 ## 🔧 Tech Stack
 
-- **Frontend:** React.js, Tailwind CSS, Firebase (Realtime DB), Socket.io-client  
+- **Frontend:** React.js, Typescript, Tailwind CSS, MongoDB, Socket.io-client  
 - **Backend:** Node.js, Express.js, MongoDB, Socket.io  
-- **Auth:** JWT with Role-Based Access Control (Admin, Organizer, Participant)
-- **Dev Tools:** ESLint, Prettier, Postman, Draw.io  
+- **Auth:** JWT with Role-Based Access Control (User, Admin)
+- **Dev Tools:** ESLint, Prettier, Insomnia, Draw.io  
 - **License:** MIT
 
 ## 📁 Project Structure
