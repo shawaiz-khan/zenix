@@ -8,7 +8,7 @@
 | email     | String     | Yes      | Used for login          |
 | password  | String     | Yes      | Hashed                  |
 | role      | String     | Yes      | Values: admin, user     |
-| favorites | [ObjectId] | No       | Favorite any event      |
+| favorites | [ObjectId] | No       | Refer to events         |
 | authToken | String     | Yes      | Used for authentication |
 
 ### Event Model
@@ -20,17 +20,26 @@
 | categories  | String     | No       | Optional event categories  |
 | creator     | ObjectId   | Yes      | Reference to User          |
 | attendees   | [ObjectId] | No       | Array of User references   |
-| created at  | Date       | Yes      | When the event is created  |
+| createdAt   | Date       | Yes      | When the event is created  |
 | state       | String     | Yes      | Values: opened, closed     |
 | approval    | String     | Yes      | Values: accepted, rejected |
 
+### Chat Room Model
+
+| Field     | Type       | Required | Description                               |
+| --------- | ---------- | -------- | ----------------------------------------- |
+| members   | [ObjectId] | Yes      | Exactly 2 user IDs in a 1v1 chat          |
+| closeChat | Boolean    | Yes      | Close  or block the chat room             |
+| lastMsg   | String     | No       | Optional: Last message for preview        |
+| updatedAt | Date       | Yes      | When the last message was sent (auto-upd) |
+
 ### Message Model
 
-| Field     | Type     | Required | Description                         |
-| --------- | -------- | -------- | ----------------------------------- |
-| sender    | ObjectId | Yes      | Reference to User                   |
-| receiver  | ObjectId | Yes      | Reference to User                   |
-| text      | String   | Yes      | Message content                     |
-| timestamp | Date     | Yes      | Automatically generated             |
-| chatId    | ObjectId | Yes      | Reference to Chat                   |
-| approval  | String   | Yes      | Values: accepted, rejected, pending |
+| Field    | Type     | Required | Description                         |
+| -------- | -------- | -------- | ----------------------------------- |
+| sender   | ObjectId | Yes      | Reference to User                   |
+| receiver | ObjectId | Yes      | Reference to User                   |
+| message  | String   | Yes      | Message content                     |
+| sentAt   | Date     | Yes      | Automatically generated             |
+| chatId   | ObjectId | Yes      | Reference to Chat                   |
+| approval | String   | Yes      | Values: accepted, rejected, pending |
