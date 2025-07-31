@@ -4,12 +4,14 @@ This document outlines the navigation links used across the Zenix platform. Rout
 
 ## Public Routes
 
-| Page     | Path        | Description                         |
-| -------- | ----------- | ----------------------------------- |
-| Home     | `/`         | Landing page with overview and CTA  |
-| Events   | `/events`   | Browse upcoming and trending events |
-| Login    | `/login`    | Sign in to your Zenix account       |
-| Register | `/register` | Create a new Zenix account          |
+| Page     | Path             | Description                         |
+| -------- | ---------------- | ----------------------------------- |
+| Home     | `/`              | Landing page with overview and CTA  |
+| Features | `/features`      | Features of the whole app           |
+| Events   | `/events`        | Browse upcoming and trending events |
+| Contact  | `/contact`       | Contact support or developer        |
+| Login    | `/auth/login`    | Sign in to your Zenix account       |
+| Register | `/auth/register` | Create a new Zenix account          |
 
 ## Authenticated User Routes
 
@@ -21,19 +23,19 @@ This document outlines the navigation links used across the Zenix platform. Rout
 | Chat Rooms    | `/chat`          | Real-time chat per event                       |
 | Notifications | `/notifications` | Invites, approvals, updates                    |
 | Profile       | `/profile`       | Edit user info and preferences                 |
-| Logout        | `/logout`        | End current session                            |
+| Logout        | `/auth/logout`   | End current session                            |
 
 ## Admin Routes (Role-Based Access)
 
 | Page             | Path                | Description                                 |
 | ---------------- | ------------------- | ------------------------------------------- |
 | Admin Dashboard  | `/admin/dashboard`  | Platform stats, activity, and system health |
-| User Management  | `/admin/users`      | Manage users, roles, bans                   |
+| User Management  | `/admin/users`      | Manage users                                |
 | Event Moderation | `/admin/moderation` | Approve or reject reported events           |
 
 ## Planned Routes
 
-| Page        | Path         | Description                                  |
-| ----------- | ------------ | -------------------------------------------- |
-| Favorites   | `/favorites` | View saved or followed events                |
-| Settings    | `/settings`  | Manage privacy, account, and notifications   |
+| Page      | Path         | Description                                |
+| --------- | ------------ | ------------------------------------------ |
+| Favorites | `/favorites` | View saved or followed events              |
+| Settings  | `/settings`  | Manage privacy, account, and notifications |
