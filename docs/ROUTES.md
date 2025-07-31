@@ -35,8 +35,5 @@ This document outlines the navigation links used across the Zenix platform. Rout
 
 | Page        | Path         | Description                                  |
 | ----------- | ------------ | -------------------------------------------- |
-| Explore     | `/explore`   | Discover events using filters and categories |
 | Favorites   | `/favorites` | View saved or followed events                |
 | Settings    | `/settings`  | Manage privacy, account, and notifications   |
-| Help Center | `/help`      | FAQs and support guides                      |
-| Feedback    | `/feedback`  | Submit bug reports or suggestions            |
