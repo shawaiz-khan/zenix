@@ -1,6 +1,10 @@
 import { Button as ShadCnButton } from "@/lib";
 import type { ReactNode } from "react";
 
+/* 
+The `interface IButton` is defining the structure of the props that the `Button` component expects
+to receive.
+*/
 interface IButton {
     label: string;
     variant?: "default" | "outline" | "secondary" | "destructive" | "ghost" | "link";
@@ -20,7 +24,7 @@ const Button: React.FC<IButton> = ({
         <ShadCnButton
             variant={variant}
             disabled={isDisabled}
-            className="relative overflow-hidden text-white border-none before:absolute before:inset-0 before:bg-accent-brand before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100 hover:text-bg-dark"
+            className="relative cursor-pointer overflow-hidden text-secondary border-none before:absolute before:inset-0 before:bg-accent-brand before:scale-x-0 before:origin-left before:transition-transform before:duration-500 hover:before:scale-x-100 hover:text-primary"
         >
             <span className="relative z-10 flex items-center gap-2">
                 {iconDirection === "left" ? (

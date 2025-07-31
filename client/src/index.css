@@ -96,9 +96,7 @@
   --color-bg-light: #F3F4F6;
 
   /* Text Colors */
-  --text-default: var(--foreground);
   --text-muted: oklch(0.556 0 0);
-  --text-accent: var(--accent-foreground);
   --text-primary: var(--primary-foreground);
   --text-secondary: var(--secondary-foreground);
   --text-destructive: var(--destructive);
