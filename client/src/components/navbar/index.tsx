@@ -8,7 +8,7 @@ import {
     NavigationMenuLink,
 } from "@/lib";
 import { logo_dark, navLinks } from "./data";
-import { ListItem } from "../ui";
+import { Button, ListItem } from "@/components";
 
 const Navbar = () => {
     return (
@@ -17,7 +17,7 @@ const Navbar = () => {
                 <img
                     src={logo_dark}
                     alt="Zenix"
-                    className="w-full max-w-32"
+                    className="w-full max-w-24"
                 />
 
                 <ShadCnNavigationMenu viewport={false}>
@@ -56,9 +56,10 @@ const Navbar = () => {
                     </NavigationMenuList>
                 </ShadCnNavigationMenu>
 
-                <button className="px-4 py-2 rounded-md bg-accent-brand outline outline-accent-brand-dark">
-                    Get Started
-                </button>
+                <Button
+                    label="Get Started"
+                />
+
             </div>
         </header>
     );
