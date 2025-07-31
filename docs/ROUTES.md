@@ -9,7 +9,7 @@ This document outlines the navigation links used across the Zenix platform. Rout
 | Home     | `/`              | Landing page with overview and CTA  |
 | Features | `/features`      | Features of the whole app           |
 | Events   | `/events`        | Browse upcoming and trending events |
-| Events   | `/contact`       | Contact support or developer        |
+| Contact  | `/contact`       | Contact support or developer        |
 | Login    | `/auth/login`    | Sign in to your Zenix account       |
 | Register | `/auth/register` | Create a new Zenix account          |
 
