@@ -1,0 +1,42 @@
+# Zenix Navigation Structure
+
+This document outlines the navigation links used across the Zenix platform. Routes are grouped based on access level: public, authenticated users, and admins.
+
+## Public Routes
+
+| Page     | Path        | Description                         |
+| -------- | ----------- | ----------------------------------- |
+| Home     | `/`         | Landing page with overview and CTA  |
+| Events   | `/events`   | Browse upcoming and trending events |
+| Login    | `/login`    | Sign in to your Zenix account       |
+| Register | `/register` | Create a new Zenix account          |
+
+## Authenticated User Routes
+
+| Page          | Path             | Description                                    |
+| ------------- | ---------------- | ---------------------------------------------- |
+| Dashboard     | `/dashboard`     | Overview of user events, invites, and activity |
+| My Events     | `/my-events`     | List of created and joined events              |
+| Create Event  | `/create-event`  | Event creation form                            |
+| Chat Rooms    | `/chat`          | Real-time chat per event                       |
+| Notifications | `/notifications` | Invites, approvals, updates                    |
+| Profile       | `/profile`       | Edit user info and preferences                 |
+| Logout        | `/logout`        | End current session                            |
+
+## Admin Routes (Role-Based Access)
+
+| Page             | Path                | Description                                 |
+| ---------------- | ------------------- | ------------------------------------------- |
+| Admin Dashboard  | `/admin/dashboard`  | Platform stats, activity, and system health |
+| User Management  | `/admin/users`      | Manage users, roles, bans                   |
+| Event Moderation | `/admin/moderation` | Approve or reject reported events           |
+
+## Planned Routes
+
+| Page        | Path         | Description                                  |
+| ----------- | ------------ | -------------------------------------------- |
+| Explore     | `/explore`   | Discover events using filters and categories |
+| Favorites   | `/favorites` | View saved or followed events                |
+| Settings    | `/settings`  | Manage privacy, account, and notifications   |
+| Help Center | `/help`      | FAQs and support guides                      |
+| Feedback    | `/feedback`  | Submit bug reports or suggestions            |

@@ -1,23 +1,53 @@
-import { NavigationMenu as ShadcnNavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, NavigationMenuLink, NavigationMenuContent } from "@/lib"
+import {
+    NavigationMenu as ShadCnNavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
+    NavigationMenuContent,
+    NavigationMenuLink,
+} from "@/lib";
+import { navLinks } from "./data";
+import { ListItem } from "../ui";
 
 const Navbar = () => {
     return (
         <div>
-            <ShadcnNavigationMenu>
+            <ShadCnNavigationMenu>
                 <NavigationMenuList>
-                    <NavigationMenuItem>
-                        <NavigationMenuTrigger>Home</NavigationMenuTrigger>
-                        <NavigationMenuContent>Hello</NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                            <a href="/docs">Documentation</a>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
+                    {navLinks.map((item) => (
+                        <NavigationMenuItem key={item.label}>
+                            {item.children ? (
+                                <>
+                                    <NavigationMenuTrigger>
+                                        {item.label}
+                                    </NavigationMenuTrigger>
+                                    <NavigationMenuContent>
+                                        <ul className="grid w-[300px] gap-4">
+                                            <li>
+                                                {item.children.map((child) => (
+                                                    <ListItem
+                                                        key={child.label}
+                                                        title={child.label}
+                                                        description={child.description}
+                                                        href={child.link}
+                                                    />
+                                                ))}
+                                            </li>
+                                        </ul>
+                                    </NavigationMenuContent>
+                                </>
+                            ) : (
+                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                    <a href={item.link}>{item.label}</a>
+                                </NavigationMenuLink>
+                            )}
+                        </NavigationMenuItem>
+                    ))}
                 </NavigationMenuList>
-            </ShadcnNavigationMenu>
+            </ShadCnNavigationMenu>
         </div>
-    )
-}
+    );
+};
 
 export default Navbar;
