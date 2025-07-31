@@ -7,46 +7,60 @@ import {
     NavigationMenuContent,
     NavigationMenuLink,
 } from "@/lib";
-import { navLinks } from "./data";
+import { logo_dark, navLinks } from "./data";
 import { ListItem } from "../ui";
 
 const Navbar = () => {
     return (
-        <div>
-            <ShadCnNavigationMenu>
-                <NavigationMenuList>
-                    {navLinks.map((item) => (
-                        <NavigationMenuItem key={item.label}>
-                            {item.children ? (
-                                <>
-                                    <NavigationMenuTrigger>
-                                        {item.label}
-                                    </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="grid w-[300px] gap-4">
-                                            <li>
+        <header className="w-full bg-white shadow">
+            <div className="mx-auto flex items-center justify-between px-6 py-4">
+                <img
+                    src={logo_dark}
+                    alt="Zenix"
+                    className="w-full max-w-32"
+                />
+
+                <ShadCnNavigationMenu viewport={false}>
+                    <NavigationMenuList className="flex gap-4">
+                        {navLinks.map((item) => (
+                            <NavigationMenuItem key={item.label}>
+                                {item.children ? (
+                                    <>
+                                        <NavigationMenuTrigger>
+                                            {item.label}
+                                        </NavigationMenuTrigger>
+                                        <NavigationMenuContent>
+                                            <ul className="grid w-60 gap-2">
                                                 {item.children.map((child) => (
-                                                    <ListItem
-                                                        key={child.label}
-                                                        title={child.label}
-                                                        description={child.description}
-                                                        href={child.link}
-                                                    />
+                                                    <li key={child.label}>
+                                                        <ListItem
+                                                            title={child.label}
+                                                            description={child.description}
+                                                            href={child.link}
+                                                        />
+                                                    </li>
                                                 ))}
-                                            </li>
-                                        </ul>
-                                    </NavigationMenuContent>
-                                </>
-                            ) : (
-                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <a href={item.link}>{item.label}</a>
-                                </NavigationMenuLink>
-                            )}
-                        </NavigationMenuItem>
-                    ))}
-                </NavigationMenuList>
-            </ShadCnNavigationMenu>
-        </div>
+                                            </ul>
+                                        </NavigationMenuContent>
+                                    </>
+                                ) : (
+                                    <NavigationMenuLink
+                                        asChild
+                                        className={navigationMenuTriggerStyle()}
+                                    >
+                                        <a href={item.link}>{item.label}</a>
+                                    </NavigationMenuLink>
+                                )}
+                            </NavigationMenuItem>
+                        ))}
+                    </NavigationMenuList>
+                </ShadCnNavigationMenu>
+
+                <button className="px-4 py-2 rounded-md bg-accent-brand outline outline-accent-brand-dark">
+                    Get Started
+                </button>
+            </div>
+        </header>
     );
 };
 
