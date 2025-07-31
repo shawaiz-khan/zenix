@@ -1,27 +1,23 @@
 import { NavigationMenuLink } from "@/lib"
-import type { ReactNode } from "react"
 
-interface IListItem extends React.ComponentPropsWithoutRef<"li"> {
+interface IListItem {
     title: string
-    children?: ReactNode
+    description?: string
     href: string
+    customClasses?: string
 }
 
-function ListItem({ title, children, href, ...props }: IListItem) {
+const ListItem: React.FC<IListItem> = ({ title, description, href, customClasses }: IListItem) => {
+    const shortDescription = description && description?.length > 70 ? description?.slice(0, 70) + "..." : description;
+
     return (
-        <li {...props}>
-            <NavigationMenuLink asChild>
-                <a href={href}>
-                    <div className="text-sm leading-none font-medium">{title}</div>
-                    {children && (
-                        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-                            {children}
-                        </p>
-                    )}
-                </a>
-            </NavigationMenuLink>
-        </li>
+        <NavigationMenuLink asChild>
+            <a href={href} className={customClasses}>
+                <h1 className="font-medium">{title}</h1>
+                <p className="text-muted-foreground">{shortDescription}</p>
+            </a>
+        </NavigationMenuLink>
     )
 }
 
-export default ListItem
+export default ListItem;

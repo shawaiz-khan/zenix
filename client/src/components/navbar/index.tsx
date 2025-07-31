@@ -1,5 +1,5 @@
 import {
-    NavigationMenu as ShadcnNavigationMenu,
+    NavigationMenu as ShadCnNavigationMenu,
     NavigationMenuItem,
     NavigationMenuList,
     NavigationMenuTrigger,
@@ -13,7 +13,7 @@ import { ListItem } from "../ui";
 const Navbar = () => {
     return (
         <div>
-            <ShadcnNavigationMenu>
+            <ShadCnNavigationMenu>
                 <NavigationMenuList>
                     {navLinks.map((item) => (
                         <NavigationMenuItem key={item.label}>
@@ -23,14 +23,18 @@ const Navbar = () => {
                                         {item.label}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
-                                        {item.children.map((child) => (
-                                            <ListItem
-                                                key={child.label}
-                                                title={child.label}
-                                                href={child.link}
-                                                className="grid w-[200px] gap-4"
-                                            />
-                                        ))}
+                                        <ul className="grid w-[300px] gap-4">
+                                            <li>
+                                                {item.children.map((child) => (
+                                                    <ListItem
+                                                        key={child.label}
+                                                        title={child.label}
+                                                        description={child.description}
+                                                        href={child.link}
+                                                    />
+                                                ))}
+                                            </li>
+                                        </ul>
                                     </NavigationMenuContent>
                                 </>
                             ) : (
@@ -41,7 +45,7 @@ const Navbar = () => {
                         </NavigationMenuItem>
                     ))}
                 </NavigationMenuList>
-            </ShadcnNavigationMenu>
+            </ShadCnNavigationMenu>
         </div>
     );
 };
