@@ -1,3 +1,5 @@
+export { default as logo_dark } from "@/assets/images/logos/logo-without-tag_black.png";
+
 interface INavLinks {
     link: string
     label: string
@@ -14,11 +16,25 @@ export const navLinks: INavLinks[] = [
         label: "Home",
     },
     {
+        link: "/features",
+        label: "Features",
+    },
+    {
         link: "/events",
         label: "Events",
     },
     {
-        link: "/about",
-        label: "About",
+        link: "/contact",
+        label: "Contact",
+        children: [
+            {
+                link: "/contact/support",
+                label: "Support"
+            },
+            {
+                link: "/contact/developer",
+                label: "Developer"
+            },
+        ]
     },
 ];
