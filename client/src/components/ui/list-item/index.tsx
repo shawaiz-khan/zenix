@@ -7,7 +7,12 @@ interface IListItem {
     customClasses?: string
 }
 
-const ListItem: React.FC<IListItem> = ({ title, description, href, customClasses }: IListItem) => {
+const ListItem: React.FC<IListItem> = ({
+    title,
+    description,
+    href,
+    customClasses = "",
+}) => {
     const shortDescription = description && description?.length > 70 ? description?.slice(0, 70) + "..." : description;
 
     return (
