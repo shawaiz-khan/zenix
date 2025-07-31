@@ -56,9 +56,7 @@ const Navbar = () => {
                     </NavigationMenuList>
                 </ShadCnNavigationMenu>
 
-                <Button
-                    label="Get Started"
-                />
+                <Button label="Get Started" />
 
             </div>
         </header>
