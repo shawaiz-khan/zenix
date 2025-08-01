@@ -8,7 +8,8 @@ import {
     NavigationMenuLink,
 } from "@/lib";
 import { logo_dark, navLinks } from "./data";
-import { Button, ListItem } from "@/components";
+import { Button, ListItem, Sheet } from "@/components";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
     return (
@@ -20,7 +21,7 @@ const Navbar = () => {
                     className="w-full max-w-24"
                 />
 
-                <ShadCnNavigationMenu viewport={false}>
+                <ShadCnNavigationMenu viewport={false} className="hidden md:block">
                     <NavigationMenuList className="flex gap-4">
                         {navLinks.map((item) => (
                             <NavigationMenuItem key={item.label}>
@@ -56,7 +57,50 @@ const Navbar = () => {
                     </NavigationMenuList>
                 </ShadCnNavigationMenu>
 
-                <Button label="Get Started" />
+                <Sheet
+                    triggerIcon={<Menu />}
+                    sheetHeader={{
+                        headerImg: logo_dark,
+                        headerTitle: "Explore Zenix",
+                        showHeaderTitle: false,
+                        headerDescription: "Plan events, manage guests, and send updates.",
+                    }}
+                    sheetFooter={{
+                        buttonLabel: "Get Started"
+                    }}
+                >
+                    <div className="flex flex-col gap-2 p-2">
+                        {navLinks.map((item) => (
+                            <div key={item.label} className="flex flex-col gap-2">
+                                <a
+                                    href={item.link}
+                                    className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
+                                >
+                                    {item.label}
+                                </a>
+
+                                {item.children && (
+                                    <div className="flex flex-col gap-2">
+                                        {item.children.map((child) => (
+                                            <a
+                                                key={child.label}
+                                                href={child.link}
+                                                className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
+                                            >
+                                                {child.label}
+                                            </a>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </Sheet>
+
+                <Button
+                    label="Get Started"
+                    customClasses="hidden md:block"
+                />
 
             </div>
         </header>
