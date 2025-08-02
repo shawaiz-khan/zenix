@@ -8,7 +8,7 @@ import {
     NavigationMenuLink,
 } from "@/lib";
 import { logo_dark, navLinks } from "./data";
-import { Button, ListItem, Sheet } from "@/components";
+import { Button, ListItem, Sheet, ThemeToggle } from "@/components";
 import { Menu } from "lucide-react";
 
 const Navbar = () => {
@@ -98,7 +98,7 @@ const Navbar = () => {
                 </Sheet>
 
                 <div className="flex items-center gap-3">
-                    <h1>Theme Toggle</h1>
+                    <ThemeToggle />
                     <Button
                         label="Get Started"
                         customClasses="hidden md:block"
