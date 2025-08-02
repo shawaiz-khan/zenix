@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
             <img
                 src={hero_img}
                 alt="Event illustration"
-                className="w-72 md:w-96 h-72 md:h-96 object-cover -mt-5 md:order-2"
+                className="w-72 md:w-96 h-72 md:h-96 object-cover -mt-5 md:order-2 drop-shadow-xl"
             />
             <div className="flex flex-col gap-4">
                 <h1 className="text-primary text-3xl md:text-6xl md:max-w-[40rem] font-bold text-center md:text-left">
@@ -19,8 +19,8 @@ const Hero: React.FC = () => {
                     made for anyone who wants to bring people together and keep things simple.
                 </p>
                 <div className="space-x-2">
-                    <Button label="Create an Event" />
-                    <Button label="Explore Features" variant="outline" />
+                    <Button label="Create an Event" customClasses="md:py-5" />
+                    <Button label="Explore Features" variant="outline" customClasses="md:py-5" />
                 </div>
             </div>
         </section>
