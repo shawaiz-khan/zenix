@@ -1,0 +1,1 @@
+export { default as hero_img } from "@/assets/images/hero/hero_mobile.png";
