@@ -97,10 +97,13 @@ const Navbar = () => {
                     </div>
                 </Sheet>
 
-                <Button
-                    label="Get Started"
-                    customClasses="hidden md:block"
-                />
+                <div className="flex items-center gap-3">
+                    <h1>Theme Toggle</h1>
+                    <Button
+                        label="Get Started"
+                        customClasses="hidden md:block"
+                    />
+                </div>
 
             </div>
         </header>
