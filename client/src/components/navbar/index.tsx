@@ -7,18 +7,21 @@ import {
     NavigationMenuContent,
     NavigationMenuLink,
 } from "@/lib";
-import { logo_dark, navLinks } from "./data";
+import { logo_dark, logo_light, navLinks } from "./data";
 import { Button, ListItem, Sheet, ThemeToggle } from "@/components";
 import { Menu } from "lucide-react";
+import { useTheme } from "@/hooks";
 
 const Navbar = () => {
+    const { theme } = useTheme();
+
     return (
-        <header className="w-full bg-white shadow">
+        <header className={`w-full ${theme === "dark" ? "bg-bg-dark" : "bg-white"} shadow transition-all duration-300 ease-in`}>
             <div className="mx-auto flex items-center justify-between px-6 py-4">
                 <img
-                    src={logo_dark}
+                    src={theme === "light" ? logo_dark : logo_light}
                     alt="Zenix"
-                    className="w-full max-w-24"
+                    className="w-full max-w-24 transition-all duration-300 ease-in"
                 />
 
                 <ShadCnNavigationMenu viewport={false} className="hidden md:block">
@@ -27,11 +30,11 @@ const Navbar = () => {
                             <NavigationMenuItem key={item.label}>
                                 {item.children ? (
                                     <>
-                                        <NavigationMenuTrigger>
+                                        <NavigationMenuTrigger className={navigationMenuTriggerStyle({ theme })}>
                                             {item.label}
                                         </NavigationMenuTrigger>
-                                        <NavigationMenuContent>
-                                            <ul className="grid w-60 gap-2">
+                                        <NavigationMenuContent theme={theme}>
+                                            <ul className="grid w-48 gap-2">
                                                 {item.children.map((child) => (
                                                     <li key={child.label}>
                                                         <ListItem
@@ -47,7 +50,7 @@ const Navbar = () => {
                                 ) : (
                                     <NavigationMenuLink
                                         asChild
-                                        className={navigationMenuTriggerStyle()}
+                                        className={navigationMenuTriggerStyle({ theme })}
                                     >
                                         <a href={item.link}>{item.label}</a>
                                     </NavigationMenuLink>
