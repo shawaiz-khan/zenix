@@ -60,52 +60,54 @@ const Navbar = () => {
                     </NavigationMenuList>
                 </ShadCnNavigationMenu>
 
-                <Sheet
-                    triggerIcon={<Menu />}
-                    sheetHeader={{
-                        headerImg: logo_dark,
-                        headerTitle: "Explore Zenix",
-                        showHeaderTitle: false,
-                        headerDescription: "Plan events, manage guests, and send updates.",
-                    }}
-                    sheetFooter={{
-                        buttonLabel: "Get Started"
-                    }}
-                >
-                    <div className="flex flex-col gap-2 p-2">
-                        {navLinks.map((item) => (
-                            <div key={item.label} className="flex flex-col gap-2">
-                                <a
-                                    href={item.link}
-                                    className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
-                                >
-                                    {item.label}
-                                </a>
-
-                                {item.children && (
-                                    <div className="flex flex-col gap-2">
-                                        {item.children.map((child) => (
-                                            <a
-                                                key={child.label}
-                                                href={child.link}
-                                                className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
-                                            >
-                                                {child.label}
-                                            </a>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </Sheet>
-
                 <div className="flex items-center gap-3">
-                    <ThemeToggle />
-                    <Button
-                        label="Get Started"
-                        customClasses="hidden md:block"
-                    />
+                    <Sheet
+                        triggerIcon={<Menu />}
+                        sheetHeader={{
+                            headerImg: logo_dark,
+                            headerTitle: "Explore Zenix",
+                            showHeaderTitle: false,
+                            headerDescription: "Plan events, manage guests, and send updates.",
+                        }}
+                        sheetFooter={{
+                            buttonLabel: "Get Started"
+                        }}
+                    >
+                        <div className="flex flex-col gap-2 p-2">
+                            {navLinks.map((item) => (
+                                <div key={item.label} className="flex flex-col gap-2">
+                                    <a
+                                        href={item.link}
+                                        className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
+                                    >
+                                        {item.label}
+                                    </a>
+
+                                    {item.children && (
+                                        <div className="flex flex-col gap-2">
+                                            {item.children.map((child) => (
+                                                <a
+                                                    key={child.label}
+                                                    href={child.link}
+                                                    className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
+                                                >
+                                                    {child.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </Sheet>
+
+                    <div className="flex items-center gap-3">
+                        <ThemeToggle />
+                        <Button
+                            label="Get Started"
+                            customClasses="hidden md:block"
+                        />
+                    </div>
                 </div>
 
             </div>
