@@ -2,9 +2,9 @@ const getVariantThemeClass = (theme: "light" | "dark", variant: string) => {
     if (theme === "dark") {
         switch (variant) {
             case "default":
-                return "bg-secondary text-primary hover:text-secondary";
+                return "bg-secondary text-primary hover:text-primary hover:bg-secondary/90";
             case "outline":
-                return "border border-bg-dark-hover";
+                return "border border-bg-dark-hover bg-transparent";
             case "secondary":
                 return "bg-muted text-primary";
             case "destructive":

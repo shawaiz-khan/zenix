@@ -32,7 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(({
             ref={ref}
             variant={variant}
             disabled={isDisabled}
-            className={`relative cursor-pointer overflow-hidden transition-all duration-300 ease-in ${customClasses} ${variantClass}`}
+            className={`relative cursor-pointer overflow-hidden ${customClasses} ${variantClass}`}
             {...props}
         >
             <span className="relative z-10 flex items-center gap-2">
