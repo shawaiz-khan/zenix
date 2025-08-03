@@ -1,3 +1,4 @@
+import { useTheme } from "@/hooks"
 import { NavigationMenuLink } from "@/lib"
 
 interface IListItem {
@@ -14,12 +15,13 @@ const ListItem: React.FC<IListItem> = ({
     customClasses = "",
 }) => {
     const shortDescription = description && description?.length > 70 ? description?.slice(0, 70) + "..." : description;
+    const { theme } = useTheme();
 
     return (
         <NavigationMenuLink asChild>
-            <a href={href} className={customClasses}>
+            <a href={href} className={`${customClasses} ${theme === "dark" ? "hover:bg-bg-dark-hover hover:text-secondary" : ""}`}>
                 <h1 className="font-medium">{title}</h1>
-                <p className="text-muted-foreground">{shortDescription}</p>
+                {description && <p className="text-muted-foreground">{shortDescription}</p>}
             </a>
         </NavigationMenuLink>
     )

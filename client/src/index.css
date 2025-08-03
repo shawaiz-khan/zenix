@@ -49,6 +49,7 @@
   --color-accent-brand-dark: #00BF9D;
   --color-bg-dark: #0F0F1A;
   --color-bg-light: #F3F4F6;
+  --color-bg-dark-hover: #1A1A2B;
 
   /* Text Colors */
   --text-default: var(--foreground);

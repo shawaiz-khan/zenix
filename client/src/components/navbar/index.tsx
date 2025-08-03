@@ -7,18 +7,21 @@ import {
     NavigationMenuContent,
     NavigationMenuLink,
 } from "@/lib";
-import { logo_dark, navLinks } from "./data";
+import { logo_dark, logo_light, navLinks } from "./data";
 import { Button, ListItem, Sheet, ThemeToggle } from "@/components";
 import { Menu } from "lucide-react";
+import { useTheme } from "@/hooks";
 
 const Navbar = () => {
+    const { theme } = useTheme();
+
     return (
-        <header className="w-full bg-white shadow">
+        <header className={`w-full ${theme === "dark" ? "bg-bg-dark" : "bg-white"} shadow transition-all duration-300 ease-in`}>
             <div className="mx-auto flex items-center justify-between px-6 py-4">
                 <img
-                    src={logo_dark}
+                    src={theme === "light" ? logo_dark : logo_light}
                     alt="Zenix"
-                    className="w-full max-w-24"
+                    className="w-full max-w-24 transition-all duration-300 ease-in"
                 />
 
                 <ShadCnNavigationMenu viewport={false} className="hidden md:block">
@@ -27,11 +30,11 @@ const Navbar = () => {
                             <NavigationMenuItem key={item.label}>
                                 {item.children ? (
                                     <>
-                                        <NavigationMenuTrigger>
+                                        <NavigationMenuTrigger className={navigationMenuTriggerStyle({ theme })}>
                                             {item.label}
                                         </NavigationMenuTrigger>
-                                        <NavigationMenuContent>
-                                            <ul className="grid w-60 gap-2">
+                                        <NavigationMenuContent theme={theme}>
+                                            <ul className="grid w-48 gap-2">
                                                 {item.children.map((child) => (
                                                     <li key={child.label}>
                                                         <ListItem
@@ -47,7 +50,7 @@ const Navbar = () => {
                                 ) : (
                                     <NavigationMenuLink
                                         asChild
-                                        className={navigationMenuTriggerStyle()}
+                                        className={navigationMenuTriggerStyle({ theme })}
                                     >
                                         <a href={item.link}>{item.label}</a>
                                     </NavigationMenuLink>
@@ -57,52 +60,54 @@ const Navbar = () => {
                     </NavigationMenuList>
                 </ShadCnNavigationMenu>
 
-                <Sheet
-                    triggerIcon={<Menu />}
-                    sheetHeader={{
-                        headerImg: logo_dark,
-                        headerTitle: "Explore Zenix",
-                        showHeaderTitle: false,
-                        headerDescription: "Plan events, manage guests, and send updates.",
-                    }}
-                    sheetFooter={{
-                        buttonLabel: "Get Started"
-                    }}
-                >
-                    <div className="flex flex-col gap-2 p-2">
-                        {navLinks.map((item) => (
-                            <div key={item.label} className="flex flex-col gap-2">
-                                <a
-                                    href={item.link}
-                                    className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
-                                >
-                                    {item.label}
-                                </a>
-
-                                {item.children && (
-                                    <div className="flex flex-col gap-2">
-                                        {item.children.map((child) => (
-                                            <a
-                                                key={child.label}
-                                                href={child.link}
-                                                className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
-                                            >
-                                                {child.label}
-                                            </a>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </Sheet>
-
                 <div className="flex items-center gap-3">
-                    <ThemeToggle />
-                    <Button
-                        label="Get Started"
-                        customClasses="hidden md:block"
-                    />
+                    <Sheet
+                        triggerIcon={<Menu />}
+                        sheetHeader={{
+                            headerImg: logo_dark,
+                            headerTitle: "Explore Zenix",
+                            showHeaderTitle: false,
+                            headerDescription: "Plan events, manage guests, and send updates.",
+                        }}
+                        sheetFooter={{
+                            buttonLabel: "Get Started"
+                        }}
+                    >
+                        <div className="flex flex-col gap-2 p-2">
+                            {navLinks.map((item) => (
+                                <div key={item.label} className="flex flex-col gap-2">
+                                    <a
+                                        href={item.link}
+                                        className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
+                                    >
+                                        {item.label}
+                                    </a>
+
+                                    {item.children && (
+                                        <div className="flex flex-col gap-2">
+                                            {item.children.map((child) => (
+                                                <a
+                                                    key={child.label}
+                                                    href={child.link}
+                                                    className="text-base font-medium hover:bg-muted py-2 px-4 rounded-md"
+                                                >
+                                                    {child.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </Sheet>
+
+                    <div className="flex items-center gap-3">
+                        <ThemeToggle />
+                        <Button
+                            label="Get Started"
+                            customClasses="hidden md:block"
+                        />
+                    </div>
                 </div>
 
             </div>
