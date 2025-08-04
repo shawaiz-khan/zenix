@@ -63,8 +63,9 @@ const Navbar = () => {
                 <div className="flex items-center gap-3">
                     <Sheet
                         triggerIcon={<Menu />}
+                        theme={theme}
                         sheetHeader={{
-                            headerImg: logo_dark,
+                            headerImg: theme === "light" ? logo_dark : logo_light,
                             headerTitle: "Explore Zenix",
                             showHeaderTitle: false,
                             headerDescription: "Plan events, manage guests, and send updates.",
