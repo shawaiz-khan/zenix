@@ -2,7 +2,7 @@ import { features } from "../data";
 
 const Features: React.FC = () => {
     return (
-        <section className="p-5 md:py-12 bg-white text-primary">
+        <section className="p-5 md:py-12 bg-white text-primary min-h-screen flex flex-col justify-center items-center">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-10 flex flex-col justify-center items-center text-center">
                     <h1 className="text-3xl md:text-4xl font-bold mb-4">Core Features</h1>
