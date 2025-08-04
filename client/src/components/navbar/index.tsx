@@ -16,7 +16,7 @@ const Navbar = () => {
     const { theme } = useTheme();
 
     return (
-        <header className={`w-full ${theme === "dark" ? "bg-bg-dark" : "bg-white"} shadow transition-all duration-300 ease-in`}>
+        <header className={`w-full ${theme === "dark" ? "bg-bg-dark" : "bg-white"} shadow`}>
             <div className="mx-auto flex items-center justify-between px-6 py-4">
                 <img
                     src={theme === "light" ? logo_dark : logo_light}
@@ -63,8 +63,9 @@ const Navbar = () => {
                 <div className="flex items-center gap-3">
                     <Sheet
                         triggerIcon={<Menu />}
+                        theme={theme}
                         sheetHeader={{
-                            headerImg: logo_dark,
+                            headerImg: theme === "light" ? logo_dark : logo_light,
                             headerTitle: "Explore Zenix",
                             showHeaderTitle: false,
                             headerDescription: "Plan events, manage guests, and send updates.",

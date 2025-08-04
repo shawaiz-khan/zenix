@@ -26,6 +26,7 @@ interface ISheet {
     sheetFooter?: {
         buttonLabel?: string;
     }
+    theme?: "light" | "dark";
 }
 
 const Sheet: React.FC<ISheet> = ({
@@ -34,7 +35,8 @@ const Sheet: React.FC<ISheet> = ({
     triggerClasses,
     sheetHeader,
     sheetFooter,
-    children
+    children,
+    theme = "light"
 }) => {
     return (
         <ShadCnSheet>
@@ -46,7 +48,7 @@ const Sheet: React.FC<ISheet> = ({
                     customClasses={`p-0 cursor-pointer text-secondary hover:bg-transparent md:hidden text-primary shadow-none ${triggerClasses}`}
                 />
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className={`py-4 ${theme === "dark" ? "bg-bg-dark text-secondary border-none" : "bg-bg-light text-primary"}`}>
                 <SheetHeader>
                     <SheetTitle className={sheetHeader.showHeaderTitle ? "block" : "hidden"}>{sheetHeader.headerTitle}</SheetTitle>
                     {sheetHeader.headerImg &&
@@ -57,7 +59,7 @@ const Sheet: React.FC<ISheet> = ({
                         />
                     }
                     {sheetHeader.headerDescription &&
-                        <SheetDescription>{sheetHeader.headerDescription}</SheetDescription>
+                        <SheetDescription className={theme === "dark" ? "text-secondary" : "text-primary"}>{sheetHeader.headerDescription}</SheetDescription>
                     }
                 </SheetHeader>
                 {children}

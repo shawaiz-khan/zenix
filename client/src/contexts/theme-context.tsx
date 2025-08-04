@@ -1,3 +1,4 @@
+import { notify } from "@/utils";
 import { createContext, useState, type ReactNode } from "react";
 
 interface IThemeContext {
@@ -15,7 +16,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState<"light" | "dark">("light");
 
     const toggleTheme = () => {
-        setTheme((prev: string) => (prev === "light" ? "dark" : "light"));
+        const nextTheme = theme === "light" ? "dark" : "light";
+        localStorage.setItem("theme", nextTheme);
+        setTheme(nextTheme);
+        notify(`Theme changed to ${nextTheme.charAt(0).toUpperCase() + nextTheme.slice(1)}`);
     };
 
     return (
@@ -24,6 +28,5 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         </ThemeContext.Provider>
     );
 };
-
 
 export { ThemeProvider, ThemeContext };

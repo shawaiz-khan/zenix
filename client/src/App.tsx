@@ -1,15 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { routes } from "./routes"
-import { ThemeProvider } from "./contexts";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from "./routes";
+import { ToastContainerWrapper } from './components/index.ts'
 
 const router = createBrowserRouter([...routes]);
 
 function App() {
   return (
-    <ThemeProvider>
+    <>
       <RouterProvider router={router} />
-    </ThemeProvider>
-  )
+      <ToastContainerWrapper />
+    </>
+  );
 }
 
 export default App;
