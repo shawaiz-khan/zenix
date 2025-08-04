@@ -30,12 +30,4 @@ export const features: IFeatures[] = [
         title: "Real-Time Alerts",
         description: "Send instant updates and changes to all attendees, whether it’s a time shift or a last-minute note.",
     },
-    {
-        title: "Role-Based Access",
-        description: "Assign different permissions to organizers, speakers, or volunteers so everyone stays in their lane.",
-    },
-    {
-        title: "Smart Dashboard",
-        description: "View all your upcoming events, invitations, and attendee stats in one simple, powerful dashboard.",
-    },
 ];
