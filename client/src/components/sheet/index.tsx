@@ -73,7 +73,7 @@ const Sheet: React.FC<ISheet> = ({
                         <Button
                             variant="outline"
                             label="Close"
-                            customClasses="text-primary"
+                            customClasses="border-dark-secondary"
                         />
                     </SheetClose>
                 </SheetFooter>

@@ -32,7 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(({
             ref={ref}
             variant={variant}
             disabled={isDisabled}
-            className={`relative cursor-pointer overflow-hidden ${customClasses} ${variantClass} ${variant === "outline" && "bg-transparent"}`}
+            className={`relative cursor-pointer overflow-hidden ${customClasses} ${variantClass} ${(variant === "outline" && theme === "light") && "bg-transparent hover:bg-white/80"}`}
             {...props}
         >
             <span className="relative z-10 flex items-center gap-2">
