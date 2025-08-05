@@ -16,7 +16,7 @@ const Navbar = () => {
     const { theme } = useTheme();
 
     return (
-        <header className={`w-full ${theme === "dark" ? "bg-bg-dark" : "bg-white"} shadow`}>
+        <header className={`w-full ${theme === "dark" ? "bg-bg-dark" : "bg-white"} shadow sticky top-0 z-50`}>
             <div className="mx-auto flex items-center justify-between px-6 py-4">
                 <img
                     src={theme === "light" ? logo_dark : logo_light}
