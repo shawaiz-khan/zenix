@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     const { theme } = useTheme();
 
     return (
-        <footer className={`${theme === "dark" ? "bg-bg-dark text-secondary" : "bg-white text-primary"} border-t border-border p-6 md:p-10`}>
+        <footer className={`${theme === "dark" ? "bg-bg-dark text-secondary border-bg-dark-hover" : "bg-white text-primary border-border"} border-t p-6 md:p-10`}>
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
                 <div>
                     <img
