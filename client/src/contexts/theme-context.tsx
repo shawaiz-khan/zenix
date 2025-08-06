@@ -13,7 +13,7 @@ interface ThemeProviderProps {
 const ThemeContext = createContext<IThemeContext | undefined>(undefined);
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<"light" | "dark">("dark");
+    const [theme, setTheme] = useState<"light" | "dark">("light");
 
     const toggleTheme = () => {
         const nextTheme = theme === "light" ? "dark" : "light";
