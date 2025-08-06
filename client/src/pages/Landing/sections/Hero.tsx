@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
                     You can plan, share, and stay in control without any confusion. It&apos;s
                     made for anyone who wants to bring people together and keep things simple.
                 </p>
-                <div className="space-x-2">
+                <div className="space-x-2 w-full flex justify-center items-center md:justify-start">
                     <Button label="Create an Event" customClasses="md:py-5" />
                     <Button label="Explore Features" variant="outline" customClasses="md:py-5" />
                 </div>
