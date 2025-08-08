@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { createNewUser } from "../services/auth.service.js";
+import { createNewUser, loginExistingUser } from "../services/auth.service.js";
+import { CookieHelpers } from "../utils/index.js"
 
 export const RegisterUser = async (req, res) => {
     try {
@@ -18,15 +19,18 @@ export const RegisterUser = async (req, res) => {
 
         const userData = req.body;
 
-        const registeredUser = await createNewUser(userData);
+        const { newUser, accessToken, refreshToken } = await createNewUser(userData);
+
+        CookieHelpers.setCookies(res, "access", accessToken);
+        CookieHelpers.setCookies(res, "refresh", refreshToken);
 
         res.status(StatusCodes.CREATED).json({
             success: true,
             message: "User registered successfully",
             user: {
-                username: registeredUser.username,
-                email: registeredUser.email,
-                role: registeredUser.role
+                username: newUser.username,
+                email: newUser.email,
+                role: newUser.role
             }
         });
     } catch (error) {
@@ -47,11 +51,19 @@ export const LoginUser = async (req, res) => {
         }
 
         const userData = req.body;
-        const user = await loginExistingUser(userData);
+        const { userFound, accessToken, refreshToken } = await loginExistingUser(userData);
+
+        CookieHelpers.setCookies(res, "access", accessToken);
+        CookieHelpers.setCookies(res, "refresh", refreshToken);
 
         res.status(StatusCodes.ACCEPTED).json({
             success: true,
-            message: "User loggedIn successfully"
+            message: "User loggedIn successfully",
+            user: {
+                username: userFound.username,
+                email: userFound.email,
+                role: userFound.role
+            }
         })
 
     } catch (error) {
