@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { createNewUser } from "../services/auth.service.js";
+import { createNewUser, loginExistingUser } from "../services/auth.service.js";
 import { CookieHelpers } from "../utils/index.js"
 
 export const RegisterUser = async (req, res) => {
@@ -51,11 +51,19 @@ export const LoginUser = async (req, res) => {
         }
 
         const userData = req.body;
-        const user = await loginExistingUser(userData);
+        const { userFound, accessToken, refreshToken } = await loginExistingUser(userData);
+
+        CookieHelpers.setCookies(res, "access", accessToken);
+        CookieHelpers.setCookies(res, "refresh", refreshToken);
 
         res.status(StatusCodes.ACCEPTED).json({
             success: true,
-            message: "User loggedIn successfully"
+            message: "User loggedIn successfully",
+            user: {
+                username: userFound.username,
+                email: userFound.email,
+                role: userFound.role
+            }
         })
 
     } catch (error) {

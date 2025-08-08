@@ -49,7 +49,16 @@ export const loginExistingUser = async (userData) => {
             throw new Error("Passwords do not match")
         }
 
-        return userFound;
+        const userTokenData = {
+            username: userData.username,
+            email: userData.email,
+            role: userData.role
+        };
+
+        const accessToken = await JwtHelpers.create_tokens(userTokenData, "access");
+        const refreshToken = await JwtHelpers.create_tokens(userTokenData, "refresh");
+
+        return { userFound, accessToken, refreshToken };
     } catch (error) {
         throw new Error(error.message || "Cannot login the user at this moment")
     }
