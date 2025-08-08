@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { login_bar_items, onboarding } from "./data";
 import { Button } from "@/components";
 import { useRegister } from "@/hooks";
+import { motion } from "framer-motion";
 
 const Register: React.FC = () => {
     const {
@@ -45,10 +46,16 @@ const Register: React.FC = () => {
                     {onboarding.map((onboardingStep) => (
                         <Fragment key={onboardingStep.step}>
                             {onboardingStep.step === activeStep && (
-                                <onboardingStep.component
-                                    onChange={handleOnChange}
-                                    value={onboardingForm[onboardingStep.field as keyof typeof onboardingForm]}
-                                />
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <onboardingStep.component
+                                        onChange={handleOnChange}
+                                        value={onboardingForm[onboardingStep.field as keyof typeof onboardingForm]}
+                                    />
+                                </motion.div>
                             )}
                         </Fragment>
                     ))}
