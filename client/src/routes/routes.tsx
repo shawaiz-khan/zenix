@@ -1,11 +1,11 @@
 import type { RouteObject } from "react-router-dom";
-import { AuthLayout, RootLayout } from "@/layouts";
+import { RootLayout } from "@/layouts";
 import { ErrorPage, Landing, Login, Register } from "@/pages";
 
 const authRoutes: RouteObject[] = [
     {
         path: "/auth",
-        element: <AuthLayout />,
+        element: <RootLayout />, // can be changed later
         children: [
             {
                 path: "login",
