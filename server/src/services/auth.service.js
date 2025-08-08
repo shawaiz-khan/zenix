@@ -1,5 +1,5 @@
 import { UserModel } from "../models/index.js"
-import { hash_generator, hash_verifier } from "../utils/index.js"
+import { JwtHelpers, BcryptHelpers } from "../utils/index.js"
 
 export const createNewUser = async (userData) => {
     try {
@@ -9,7 +9,16 @@ export const createNewUser = async (userData) => {
             throw new Error("User already exists");
         }
 
-        const hashedPassword = await hash_generator(userData.password);
+        const hashedPassword = await BcryptHelpers.hash_generator(userData.password);
+
+        const userTokenData = {
+            username: userData.username,
+            email: userData.email,
+            role: userData.role
+        };
+
+        const accessToken = await JwtHelpers.create_tokens(userTokenData, "access");
+        const refreshToken = await JwtHelpers.create_tokens(userTokenData, "refresh");
 
         const newUser = await UserModel.create({
             username: userData.username,
@@ -17,10 +26,10 @@ export const createNewUser = async (userData) => {
             password: hashedPassword,
             role: userData.role,
             favorites: userData.favorites,
-            authToken: userData.authToken
+            authToken: refreshToken
         });
 
-        return newUser;
+        return { newUser, accessToken, refreshToken };
     } catch (error) {
         throw new Error(error.message || "User cannot be registered at the moment")
     }
@@ -34,7 +43,7 @@ export const loginExistingUser = async (userData) => {
             throw new Error("User does not exists");
         }
 
-        const verifyPassword = await hash_verifier(userData.password, userFound.password);
+        const verifyPassword = await BcryptHelpers.hash_verifier(userData.password, userFound.password);
 
         if (!verifyPassword) {
             throw new Error("Passwords do not match")
