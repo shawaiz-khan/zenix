@@ -16,16 +16,9 @@ export const RegisterUser = async (req, res) => {
             throw new Error("Fill all the given fields");
         }
 
-        const user = {
-            username,
-            email,
-            password,
-            role,
-            favorites,
-            authToken
-        };
+        const userData = req.body;
 
-        const registeredUser = await createNewUser(user);
+        const registeredUser = await createNewUser(userData);
 
         res.status(StatusCodes.CREATED).json({
             success: true,
@@ -44,3 +37,28 @@ export const RegisterUser = async (req, res) => {
         });
     }
 };
+
+export const LoginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email, !password) {
+            throw new Error("Fill all the given fields");
+        }
+
+        const userData = req.body;
+        const user = await loginExistingUser(userData);
+
+        res.status(StatusCodes.ACCEPTED).json({
+            success: true,
+            message: "User loggedIn successfully"
+        })
+
+    } catch (error) {
+        console.log("Login Error: ", error.message);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            success: false,
+            message: error.message || "Internal Server Error"
+        });
+    }
+}

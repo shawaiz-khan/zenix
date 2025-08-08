@@ -11,3 +11,12 @@ export const hash_generator = async (text) => {
         throw new Error("Cannot hash the given data");
     }
 }
+
+export const hash_verifier = async (text, hashedText) => {
+    try {
+        const verify = await bcrypt.compare(text, hashedText)
+        return verify;
+    } catch (error) {
+        throw new Error("Cannot verify the given data")
+    }
+}
