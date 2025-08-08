@@ -41,7 +41,7 @@ const useRegister = () => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("submitted: ", onboardingForm)
+        console.log("Submitted: ", onboardingForm)
         resetForm();
     }
 

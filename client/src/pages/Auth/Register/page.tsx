@@ -15,11 +15,11 @@ const Register: React.FC = () => {
     } = useRegister();
 
     return (
-        <main className={`min-h-[90vh] ${theme === "dark" ? "bg-bg-dark" : "bg-bg-light"} flex justify-center items-center`}>
-            <div className={`${theme === "dark" ? "bg-bg-dark-secondary text-secondary" : "bg-white text-primary"} p-5 flex flex-col gap-8 max-w-72 rounded-md shadow`}>
+        <main className={`min-h-[90vh] ${theme === "dark" ? "bg-bg-dark" : "bg-white"} flex justify-center items-center max-w-96 md:max-w-full`}>
+            <div className={`${theme === "dark" ? "text-secondary" : "text-primary"} p-5 flex flex-col gap-8`}>
                 <div className="text-center flex flex-col gap-2">
                     <h1 className="font-semibold text-3xl">Register at Zenix</h1>
-                    <p className="text-sm">Already have an account? <span className="underline">Login</span></p>
+                    <p className="text-sm">Already have an account? <span className="underline cursor-pointer">Login</span></p>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2 text-center text-primary">
                     <div className="flex justify-evenly items-center w-full">
@@ -32,7 +32,7 @@ const Register: React.FC = () => {
                                     {index + 1}
                                 </span>
 
-                                <p className={`text-xs text-center ${theme === "dark" ? "text-secondary/65" : "text-muted-foreground"}`}>{step}</p>
+                                <p className={`text-xs text-center max-w-32 ${theme === "dark" ? "text-secondary/65" : "text-muted-foreground"}`}>{step}</p>
 
                                 {index < login_bar_items.length - 1 && (
                                     <span className="absolute top-3 border border-accent-brand -right-1/2 h-0.5 w-full"></span>
