@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { createNewUser, loginExistingUser } from "../services/auth.service.js";
+import { createNewUser, getUserData, loginExistingUser, refreshAccessToken } from "../services/auth.service.js";
 import { CookieHelpers } from "../utils/index.js"
 
 export const RegisterUser = async (req, res) => {
@@ -71,6 +71,78 @@ export const LoginUser = async (req, res) => {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             success: false,
             message: error.message || "Internal Server Error"
+        });
+    }
+}
+
+export const LogoutUser = async (req, res) => {
+    try {
+        CookieHelpers.clearCookies(res, "access");
+        CookieHelpers.clearCookies(res, "refresh");
+
+        res.status(StatusCodes.OK).json({
+            success: true,
+            message: "Logout successful"
+        })
+    } catch (error) {
+        console.log("Logout Error: ", error.message);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            success: false,
+            message: error.message || "Internal Server Error"
+        });
+    }
+}
+
+export const GetUser = async (req, res) => {
+    try {
+        const { email } = req.user;
+        console.log("user data: ", email)
+
+        const user = await getUserData(email);
+
+        res.status(StatusCodes.OK).json({
+            success: true,
+            message: "User found",
+            user: {
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+        });
+    } catch (error) {
+        console.log("GetUser Error: ", error.message);
+        res.status(StatusCodes.UNAUTHORIZED).json({
+            success: false,
+            message: error.message || "User not found"
+        });
+    }
+}
+
+export const RefreshAccess = async (req, res) => {
+    try {
+        const authHeader = req.headers["authorization"];
+        const refreshToken = req.cookies.refreshToken || authHeader?.startsWith("Bearer ") && authHeader.split(" ")[1];
+
+        if (!refreshToken) {
+            res.status(StatusCodes.UNAUTHORIZED).json({
+                success: false,
+                message: "No refresh token found"
+            });
+        }
+
+        const accessToken = await refreshAccessToken(refreshToken);
+        CookieHelpers.setCookies(res, "access", accessToken);
+
+        res.status(StatusCodes.OK).json({
+            success: true,
+            message: "Token is refreshed",
+            accessToken
+        });
+    } catch (error) {
+        console.log("Refresh Error: ", error.message);
+        res.status(StatusCodes.UNAUTHORIZED).json({
+            success: false,
+            message: error.message || "User is unauthorized"
         });
     }
 }
