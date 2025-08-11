@@ -4,6 +4,7 @@ import { CookieHelpers } from "../utils/index.js"
 
 export const RegisterUser = async (req, res) => {
     try {
+
         const {
             username,
             email,

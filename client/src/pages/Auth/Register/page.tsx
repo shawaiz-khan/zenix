@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, type FormEvent } from "react";
 import { login_bar_items, onboarding } from "./data";
 import { Button } from "@/components";
 import { useRegister } from "@/hooks";
@@ -42,7 +42,7 @@ const Register: React.FC = () => {
                         ))}
                     </div >
                 </div>
-                <form className="flex flex-col gap-4" onSubmit={preventFormReload}>
+                <form className="flex flex-col gap-4" onSubmit={activeStep === onboarding.length ? handleSubmit : preventFormReload}>
                     {onboarding.map((onboardingStep) => (
                         <Fragment key={onboardingStep.step}>
                             {onboardingStep.step === activeStep && (
@@ -69,11 +69,15 @@ const Register: React.FC = () => {
                                 customClasses="flex-grow"
                             />
                             <Button
-                                onClick={activeStep === onboarding.length ? handleSubmit : () => setActiveStep((prev) => Math.min(onboarding.length, prev + 1))}
+                                type="button"
+                                onClick={() => {
+                                    if (activeStep === onboarding.length) {
+                                        handleSubmit(new Event("submit") as unknown as FormEvent<HTMLFormElement>);
+                                    } else {
+                                        setActiveStep(prev => Math.min(onboarding.length, prev + 1));
+                                    }
+                                }}
                                 label={activeStep === onboarding.length ? "Submit" : "Next"}
-                                isDisabled={activeStep >= onboarding.length && activeStep !== onboarding.length}
-                                customClasses="flex-grow"
-                                variant="default"
                             />
                         </div>
                     </div>
