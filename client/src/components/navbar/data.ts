@@ -17,10 +17,6 @@ export const navLinks: INavLinks[] = [
         label: "Home",
     },
     {
-        link: "/features",
-        label: "Features",
-    },
-    {
         link: "/events",
         label: "Events",
     },

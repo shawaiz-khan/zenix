@@ -25,7 +25,6 @@ export const footerLinks: FooterSection[] = [
         title: "Navigation",
         links: [
             { label: "Home", href: "/" },
-            { label: "Features", href: "/features" },
             { label: "Events", href: "/events" },
         ],
     },

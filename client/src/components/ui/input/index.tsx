@@ -26,7 +26,7 @@ const Input: React.FC<IInput> = ({
     ...rest
 }) => {
     return (
-        <div className={`${label ? "grid" : "flex"} w-full max-w-sm items-center gap-3`}>
+        <div className={`${label ? "grid" : "flex"} w-full max-w-sm items-center gap-2`}>
             {label && <label htmlFor={name}>{label}</label>}
             <ShadCnInput
                 type={inputType}
