@@ -1,9 +1,11 @@
 import { Button } from "@/components";
 import { hero_img } from "../data";
 import { useTheme } from "@/hooks";
+import { useNavigate } from "react-router-dom";
 
 const Hero: React.FC = () => {
     const { theme } = useTheme();
+    const navigate = useNavigate();
 
     return (
         <section className={`${theme === "dark" ? "bg-bg-dark-secondary" : "bg-bg-light"} min-h-96 max-h-screen p-5 md:py-5 md:px-28 flex flex-col md:flex-row justify-center md:justify-between items-center gap-5`}>
@@ -22,8 +24,8 @@ const Hero: React.FC = () => {
                     made for anyone who wants to bring people together and keep things simple.
                 </p>
                 <div className="space-x-2 w-full flex justify-center items-center md:justify-start">
-                    <Button label="Create an Event" customClasses="md:py-5" />
-                    <Button label="Explore Features" variant="outline" customClasses="md:py-5" />
+                    <Button label="Create an Event" customClasses="md:py-5" onClick={() => navigate("/events")} />
+                    <Button label="Explore Features" variant="outline" customClasses="md:py-5" onClick={() => navigate("/features")} />
                 </div>
             </div>
         </section>

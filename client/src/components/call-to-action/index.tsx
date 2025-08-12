@@ -1,8 +1,10 @@
 import { useTheme } from "@/hooks";
 import { Button } from "../ui";
+import { useNavigate } from "react-router-dom";
 
 const CallToAction: React.FC = () => {
     const { theme } = useTheme();
+    const navigate = useNavigate();
 
     return (
         <section className={`${theme === "dark" ? "bg-bg-dark-secondary text-secondary" : "bg-bg-light text-primary"} p-6 sm:p-8 md:p-16`}>
@@ -14,11 +16,8 @@ const CallToAction: React.FC = () => {
                     Zenix puts powerful tools in your hands. Manage events, send real-time notifications, and keep everything under control.
                 </p>
                 <div className="flex flex-col sm:flex-row sm:justify-center gap-4 w-full">
-                    <Button label="Create an Account" />
-                    <Button
-                        label="Contact Support"
-                        variant="outline"
-                    />
+                    <Button label="Create an Account" onClick={() => navigate("/auth/register")} />
+                    <Button label="Contact Support" variant="outline" onClick={() => navigate("/contact/support")} />
                 </div>
             </div>
         </section>
