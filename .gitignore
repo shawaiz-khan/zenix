@@ -1,3 +1,4 @@
 .vscode/
 *.drawio
 source/
+node_modules/

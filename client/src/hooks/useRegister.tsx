@@ -57,13 +57,11 @@ const useRegister = () => {
                 return;
             }
 
-            const res = await axiosInstance.post("/api/auth/register", {
+            await axiosInstance.post("/api/auth/register", {
                 email: onboardingForm.stepOne,
                 username: onboardingForm.stepTwo,
                 password: onboardingForm.stepThree
             });
-
-            console.log("Result", res.data.user)
 
             notify("User created successfully")
             resetForm();
