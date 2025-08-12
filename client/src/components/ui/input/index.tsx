@@ -2,6 +2,7 @@
 import { Input as ShadCnInput } from "@/lib";
 import Button from "../button";
 import type { InputHTMLAttributes } from "react";
+import { useTheme } from "@/hooks";
 
 interface IInput extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
     label?: string;
@@ -25,6 +26,8 @@ const Input: React.FC<IInput> = ({
     customClasses = "",
     ...rest
 }) => {
+    const { theme } = useTheme();
+
     return (
         <div className={`${label ? "grid" : "flex"} w-full max-w-sm items-center gap-2`}>
             {label && <label htmlFor={name}>{label}</label>}
@@ -34,7 +37,7 @@ const Input: React.FC<IInput> = ({
                 name={name}
                 value={value}
                 onChange={onChange}
-                className={`focus-visible:ring-accent-brand ${customClasses}`}
+                className={`focus-visible:ring-accent-brand ${customClasses} ${theme === "dark" ? "placeholder:text-secondary/65" : ""}`}
                 {...rest}
             />
             {button && (

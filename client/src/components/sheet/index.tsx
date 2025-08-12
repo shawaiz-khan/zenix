@@ -46,7 +46,7 @@ const Sheet: React.FC<ISheet> = ({
                     icon={triggerIcon}
                     label={triggerLabel}
                     variant="ghost"
-                    customClasses={`p-0 cursor-pointer text-secondary hover:bg-transparent md:hidden text-primary shadow-none ${triggerClasses}`}
+                    customClasses={`p-0 cursor-pointer text-secondary hover:bg-transparent md:hidden text-primary shadow-none ${theme === "dark" ? "text-secondary" : "text-primary"} ${triggerClasses}`}
                 />
             </SheetTrigger>
             <SheetContent className={`py-4 ${theme === "dark" ? "bg-bg-dark text-secondary border-none" : "bg-bg-light text-primary"}`}>
