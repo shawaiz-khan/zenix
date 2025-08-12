@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router-dom";
-import { RootLayout } from "@/layouts";
-import { ErrorPage, Landing, Login, Register } from "@/pages";
+import { ContactLayout, RootLayout } from "@/layouts";
+import { Developer, ErrorPage, Landing, Login, Register, Support } from "@/pages";
+import { Navigate } from "react-router-dom";
 
 const authRoutes: RouteObject[] = [
     {
@@ -14,6 +15,27 @@ const authRoutes: RouteObject[] = [
             {
                 path: "register",
                 element: <Register />
+            },
+        ]
+    }
+]
+
+const contactRoutes: RouteObject[] = [
+    {
+        path: "/contact",
+        element: <ContactLayout />,
+        children: [
+            {
+                index: true,
+                element: <Navigate to="support" replace />
+            },
+            {
+                path: "support",
+                element: <Support />
+            },
+            {
+                path: "developer",
+                element: <Developer />
             },
         ]
     }
@@ -35,6 +57,7 @@ const routes: RouteObject[] = [
         ],
     },
     ...authRoutes,
+    ...contactRoutes,
 ]
 
 export default routes;
