@@ -25,6 +25,7 @@ interface ISheet {
     children: ReactNode;
     sheetFooter?: {
         buttonLabel?: string;
+        onClick?: () => void;
     }
     theme?: "light" | "dark";
 }
@@ -67,6 +68,7 @@ const Sheet: React.FC<ISheet> = ({
                     {sheetFooter?.buttonLabel && (
                         <Button
                             label={sheetFooter?.buttonLabel}
+                            onClick={sheetFooter?.onClick}
                         />
                     )}
                     <SheetClose asChild>

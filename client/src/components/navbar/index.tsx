@@ -11,9 +11,11 @@ import { logo_dark, logo_light, navLinks } from "./data";
 import { Button, ListItem, Sheet, ThemeToggle } from "@/components";
 import { Menu } from "lucide-react";
 import { useTheme } from "@/hooks";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const { theme } = useTheme();
+    const navigate = useNavigate();
 
     return (
         <header className={`w-full border-b ${theme === "dark" ? "bg-bg-dark border-bg-dark-secondary" : "bg-white"} shadow sticky top-0 z-50`}>
@@ -71,7 +73,8 @@ const Navbar = () => {
                             headerDescription: "Plan events, manage guests, and send updates.",
                         }}
                         sheetFooter={{
-                            buttonLabel: "Get Started"
+                            buttonLabel: "Get Started",
+                            onClick: () => navigate("/auth/register")
                         }}
                     >
                         <div className="flex flex-col gap-2 p-2">
@@ -107,6 +110,7 @@ const Navbar = () => {
                         <Button
                             label="Get Started"
                             customClasses="hidden md:block"
+                            onClick={() => navigate("/auth/register")}
                         />
                     </div>
                 </div>
