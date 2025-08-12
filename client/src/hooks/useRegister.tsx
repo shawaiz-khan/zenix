@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import useTheme from "./useTheme";
+import { axiosInstance, notify } from "@/utils";
 
 interface IOnboardingForm {
     stepOne: string;
@@ -39,11 +40,37 @@ const useRegister = () => {
         setActiveStep(1);
     };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log("Submitted: ", onboardingForm)
-        resetForm();
+    const validateInputs = () => {
+        const { stepOne, stepTwo, stepThree } = onboardingForm;
+
+        if (!stepOne.trim() || !stepTwo.trim() || !stepThree.trim()) return false;
+
+        return true;
     }
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        try {
+            if (!validateInputs()) {
+                notify("Fill all the fields")
+                return;
+            }
+
+            const res = await axiosInstance.post("/api/auth/register", {
+                email: onboardingForm.stepOne,
+                username: onboardingForm.stepTwo,
+                password: onboardingForm.stepThree
+            });
+
+            console.log("Result", res.data.user)
+
+            notify("User created successfully")
+            resetForm();
+        } catch (error: unknown) {
+            console.log("Error:", error instanceof Error ? error.message : String(error) || "Error while submitting the form");
+        }
+    };
 
     const preventFormReload = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

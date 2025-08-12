@@ -12,7 +12,7 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cookieParser());
 
 connectDB();
@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
     })
 });
 
-app.use("/auth", authRoutes)
+app.use("/api/auth", authRoutes)
 
 app.listen(port, () => {
     console.log(`Server is running at port: ${port}`)
