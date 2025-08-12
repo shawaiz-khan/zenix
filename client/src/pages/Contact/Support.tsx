@@ -11,7 +11,7 @@ const Support: React.FC = () => {
 
     return (
         <main className={`min-h-[90vh] p-5 flex flex-col md:justify-center md:items-center w-full ${theme === "dark" ? "bg-bg-dark-secondary text-secondary" : "bg-bg-light"}`}>
-            <div className="w-full md:max-w-lg flex flex-col justify-center items-center">
+            <div className="w-full md:max-w-lg flex flex-col md:justify-center md:items-center">
                 <h1 className="font-bold text-3xl mb-4 md:text-center">
                     We&apos;d Love to Hear from You
                 </h1>
