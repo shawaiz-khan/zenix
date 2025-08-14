@@ -1,68 +1,53 @@
-import { useState } from "react";
-import { Input } from "@/components";
-
-// TODO: The support message should be sent via email from the backend
+import { Button, Input } from "@/components";
+import { useSupport } from "@/hooks";
 
 const Support: React.FC = () => {
-    const [form, setForm] = useState({
-        email: "",
-        subject: "",
-        message: ""
-    });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setForm(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log("Form submitted:", form);
-        // TODO: Add your submit logic (API call, notify, etc.)
-    };
+    const {
+        form,
+        handleChange,
+        handleSubmit,
+        theme
+    } = useSupport();
 
     return (
-        <main className="min-h-screen p-5 md:flex md:flex-col md:justify-center md:items-center">
-            <h1 className="font-semibold text-3xl mb-4">We’d love to hear from you</h1>
-            <p className="text-gray-600 mb-6">
-                Have a question, feedback, or need help? Fill out the form below and our team will get back to you.
-            </p>
+        <main className={`min-h-[90vh] p-5 flex flex-col md:justify-center md:items-center w-full ${theme === "dark" ? "bg-bg-dark-secondary text-secondary" : "bg-bg-light"}`}>
+            <div className="w-full md:max-w-lg flex flex-col md:justify-center md:items-center">
+                <h1 className="font-bold text-3xl mb-4 md:text-center">
+                    We&apos;d Love to Hear from You
+                </h1>
+                <p className={`${theme === "dark" ? "text-secondary/65" : "text-gray-600"} mb-6 md:text-center`}>
+                    Have a question, feedback, or need help? Fill out the form below and our team will get back to you.
+                </p>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg">
-                <Input
-                    label="Email"
-                    placeholder="user@mail.com"
-                    onChange={handleChange}
-                    name="email"
-                    value={form.email}
-                />
-                <Input
-                    label="Subject"
-                    placeholder="Support subject"
-                    onChange={handleChange}
-                    name="subject"
-                    value={form.subject}
-                />
-                <div className="flex flex-col gap-1">
-                    <label htmlFor="message" className="font-medium">Message</label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        value={form.message}
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-sm">
+                    <Input
+                        label="Email"
+                        placeholder="user@mail.com"
                         onChange={handleChange}
-                        placeholder="Write your message..."
-                        className="border rounded-md p-2 focus-visible:ring-accent-brand border-gray-200 min-h-[120px] resize-none"
+                        name="email"
+                        value={form.email}
                     />
-                </div>
-                <button
-                    type="submit"
-                    className="bg-accent-brand text-white px-4 py-2 rounded-md hover:bg-accent-brand-dark transition-colors"
-                >
-                    Send Message
-                </button>
-            </form>
+                    <Input
+                        label="Subject"
+                        placeholder="Support subject"
+                        onChange={handleChange}
+                        name="subject"
+                        value={form.subject}
+                    />
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="message" className="font-medium">Message</label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            value={form.message}
+                            onChange={handleChange}
+                            placeholder="Write your message..."
+                            className={`w-full border border-gray-200 rounded-md p-2 min-h-[120px] resize-none focus:border-accent-brand focus:ring-2 focus:ring-accent-brand focus:outline-none ${theme === "dark" ? "placeholder:text-secondary/65" : ""}`}
+                        />
+                    </div>
+                    <Button label="Send Message" onClick={handleSubmit} />
+                </form>
+            </div>
         </main>
     );
 };
