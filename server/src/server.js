@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { StatusCodes } from "http-status-codes";
 import cors from "cors";
-import { authRoutes } from "./routes/index.js";
+import { authRoutes, contactRoutes } from "./routes/index.js";
 import { connectDB } from "./lib/index.js";
 import cookieParser from "cookie-parser";
 
@@ -24,7 +24,8 @@ app.get("/", (req, res) => {
     })
 });
 
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/contact", contactRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running at port: ${port}`)
