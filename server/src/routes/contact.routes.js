@@ -1,10 +1,10 @@
 import express from "express";
-import { contactSupport } from "../controllers/index.js";
+import { contactSupport, contactDeveloper } from "../controllers/index.js";
 
 const router = express.Router();
 
 router.post("/support", contactSupport);
-router.post("/developer", () => console.log("Developer Contacted"));
+router.post("/developer", contactDeveloper);
 
 const contactRoutes = router;
 
