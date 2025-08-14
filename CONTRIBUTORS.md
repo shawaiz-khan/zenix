@@ -1,7 +1,7 @@
 # Contributors
 
 > Every contributor must add their details in the list below following this format:
-> **Name** – [GitHub Profile](https://github.com/username)
+> **Name** – [github.com/only-as19](https://github.com/only-as19)
 
 ---
 
