@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import useTheme from "./useTheme";
+import { axiosInstance, notify } from "@/utils";
 
 const useDeveloper = () => {
     const [form, setForm] = useState<{ email: string, subject: string, message: string }>({
@@ -16,11 +18,31 @@ const useDeveloper = () => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const validate = (): boolean => {
+        if (!form.email || !form.subject || !form.message) return false;
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(form.email)) return false;
+
+        return true;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", form);
-        // TODO: Add submit logic (API call, notify, etc.)
-        // TODO: The support message should be sent via email from the backend
+
+        try {
+            if (!validate()) {
+                alert("Please fill all fields correctly!");
+                return;
+            }
+
+            console.log("Form submitted:", form);
+            await axiosInstance.post("/api/contact/developer", form)
+
+            notify("Message sent");
+        } catch (error: any) {
+            notify(error?.message || "Cannot send message")
+        }
     };
 
     return { form, handleChange, handleSubmit, theme }
