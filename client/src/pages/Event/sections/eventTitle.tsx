@@ -7,7 +7,7 @@ const EventTitle: React.FC = () => {
     <section
       className={`${
         theme === "dark" ? "bg-bg-dark-secondary" : "bg-bg-light"
-      } min-h-96 max-h-screen p-5 md:py-5 md:px-28 flex flex-col md:flex-row justify-center items-center gap-5 bg-cover ' bg-center`}
+      } min-h-96 max-h-screen p-5 md:py-5 md:px-28 flex flex-col md:flex-row justify-center items-center gap-5`}
       // style={{backgroundImage:`url(${EventMainTitle})`}}
     >
       <div className="flex flex-col gap-4 justify-start text-center">
