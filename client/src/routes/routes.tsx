@@ -1,6 +1,7 @@
+
 import type { RouteObject } from "react-router-dom";
 import { ContactLayout, RootLayout } from "@/layouts";
-import { Developer, ErrorPage, Landing, Login, Register, Support } from "@/pages";
+import { Developer, ErrorPage, Landing, Login, Register, Support,Event } from "@/pages";
 import { Navigate } from "react-router-dom";
 
 const authRoutes: RouteObject[] = [
@@ -41,6 +42,16 @@ const contactRoutes: RouteObject[] = [
     }
 ]
 
+const eventRoutes:RouteObject[] = [
+    {
+        path:"events",
+        element:<RootLayout />,
+        children:[
+            { index: true, element: <Event /> },
+        ]
+    }
+]
+
 const routes: RouteObject[] = [
     {
         path: "/",
@@ -58,6 +69,7 @@ const routes: RouteObject[] = [
     },
     ...authRoutes,
     ...contactRoutes,
+    ...eventRoutes
 ]
 
 export default routes;
