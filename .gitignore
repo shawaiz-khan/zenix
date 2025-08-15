@@ -2,3 +2,4 @@
 *.drawio
 source/
 node_modules/
+*.env
