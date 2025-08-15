@@ -49,6 +49,7 @@ const useLogin = (): UseLoginReturn => {
             notify(err.response?.data?.message || "Something went wrong");
         } finally {
             setIsLoading(false);
+            navigate(`/user/${email}/profile`)
         }
     };
 
