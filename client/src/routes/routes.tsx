@@ -47,6 +47,10 @@ const userRoutes: RouteObject[] = [
         element: <UserLayout />,
         children: [
             {
+                index: true,
+                element: <Navigate to="profile" replace />
+            },
+            {
                 path: "profile",
                 element: <Profile />,
             }
