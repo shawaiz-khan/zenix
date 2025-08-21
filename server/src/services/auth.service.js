@@ -67,9 +67,9 @@ export const loginExistingUser = async (userData) => {
     }
 }
 
-export const getUserData = async (email) => {
+export const getUserData = async (username) => {
     try {
-        const user = await UserModel.findOne({ email });
+        const user = await UserModel.findOne({ username });
         return user;
     } catch (error) {
         throw new Error(error.message || "Cannot get the user data")

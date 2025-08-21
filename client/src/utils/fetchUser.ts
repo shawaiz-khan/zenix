@@ -1,11 +1,9 @@
 import axiosInstance from "./axiosInstance";
 
-const fetchUser = async (email: string) => {
+const fetchUser = async (username: string) => {
     try {
-        const res = axiosInstance.post("/api/user", email);
-        console.log(res);
-
-        return res;
+        const res = await axiosInstance.post("/api/auth/user/me", username);
+        return res.data.user;
     } catch (error: unknown) {
         console.log("Error:", error instanceof Error ? error.message : String(error) || "Error while fetching user");
     }
