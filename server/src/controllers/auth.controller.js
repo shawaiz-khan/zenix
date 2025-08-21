@@ -96,10 +96,10 @@ export const LogoutUser = async (req, res) => {
 
 export const GetUser = async (req, res) => {
     try {
-        const { email } = req.user;
-        console.log("user data: ", email)
+        const { username } = req.user;
+        console.log("user data: ", username)
 
-        const user = await getUserData(email);
+        const user = await getUserData(username);
 
         res.status(StatusCodes.OK).json({
             success: true,
