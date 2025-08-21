@@ -18,6 +18,7 @@ const useLogin = (): UseLoginReturn => {
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
+    let username = "";
 
     const validateInputs = (): boolean => {
         return !!(email.trim() && password.trim());
@@ -43,12 +44,13 @@ const useLogin = (): UseLoginReturn => {
             }
 
             notify("User login successful");
-            navigate("/dashboard")
+            username = res.data.user.username;
         } catch (err: any) {
             console.error("Login failed:", err);
             notify(err.response?.data?.message || "Something went wrong");
         } finally {
             setIsLoading(false);
+            navigate(`/user/${username}/profile`)
         }
     };
 

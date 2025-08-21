@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-* {
-  user-select: none;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

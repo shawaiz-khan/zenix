@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import useTheme from "./useTheme";
 import { axiosInstance, notify } from "@/utils";
+import { useNavigate } from "react-router-dom";
 
 interface IOnboardingForm {
     stepOne: string;
@@ -19,6 +20,7 @@ const useRegister = () => {
     });
 
     const { theme } = useTheme();
+    const navigate = useNavigate();
 
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -67,6 +69,8 @@ const useRegister = () => {
             resetForm();
         } catch (error: unknown) {
             console.log("Error:", error instanceof Error ? error.message : String(error) || "Error while submitting the form");
+        } finally {
+            navigate(`/user/${onboardingForm.stepOne}/profile`)
         }
     };
 

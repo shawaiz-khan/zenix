@@ -3,6 +3,7 @@ import { login_bar_items, onboarding } from "./data";
 import { Button } from "@/components";
 import { useRegister } from "@/hooks";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Register: React.FC = () => {
     const {
@@ -15,12 +16,14 @@ const Register: React.FC = () => {
         preventFormReload
     } = useRegister();
 
+    const navigate = useNavigate();
+
     return (
         <main className={`min-h-[90vh] ${theme === "dark" ? "bg-bg-dark-secondary" : "bg-bg-light"} flex justify-center items-center max-w-96 md:max-w-full`}>
             <div className={`${theme === "dark" ? "text-secondary" : "text-primary"} p-5 flex flex-col gap-8`}>
                 <div className="text-center flex flex-col gap-2">
                     <h1 className="font-semibold text-3xl">Register at Zenix</h1>
-                    <p className="text-sm">Already have an account? <span className="underline cursor-pointer">Login</span></p>
+                    <p className="text-sm">Already have an account? <span className="underline cursor-pointer" onClick={() => navigate("/auth/login")} >Login</span></p>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2 text-center text-primary">
                     <div className="flex justify-evenly items-center w-full">
