@@ -1,43 +1,46 @@
-import {
-  SquareUserRound,
-  CalendarCheck,
-  LucideSearch,
-} from "lucide-react";
+import {LucideSearch} from "lucide-react";
 import { eventsData } from "../data";
-import { Button } from "@/components";
 import { useTheme } from "@/hooks";
 import { useState } from "react";
+import {Card} from "../../../components/index";
 
 const EventCard: React.FC = () => {
   const { theme } = useTheme();
 
   const [searchEvent, setSearchEvent] = useState("");
 
-  const [filteredEvents, setFilteredEvents] = useState(eventsData);
+  const [featuredEvent, setfeaturedEvent] = useState(eventsData)
 
-  const applySearch = () => {
-    const searchText = searchEvent.trim().toLowerCase();
-    if (!searchText) {
-      setFilteredEvents(eventsData);
-      return;
+  const searchtText = searchEvent.trim().toLocaleLowerCase()
+
+  const applySearch = ()=>{
+    if(!searchEvent){
+      setfeaturedEvent(eventsData)
+     return
     }
+  
 
-    const searchProcess = eventsData.filter((e) => {
-      const searchData = [
+  const searchProcess = eventsData.filter(e =>
+    {
+      const serachData= [
         e.title,
         e.description,
-        e.creator,
         e.categories,
+        e.creator,
+        e.attendees
       ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
+      .filter(Boolean)
+      .join(" ")
+      .toLocaleLowerCase()
+      
+     return serachData.includes(searchtText)
+    })
+    setfeaturedEvent(searchProcess)
+  }
 
-      return searchData.includes(searchText);
-    });
-
-    setFilteredEvents(searchProcess);
-  };
+  const EventCard = featuredEvent.map((event,index) => (
+    <Card key={index} event={event} />
+  ))
 
   return (
     <section
@@ -73,49 +76,7 @@ const EventCard: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
-        {filteredEvents.map((event, index) => (
-          <div
-            key={index}
-            className="group border-2 border-zinc-300 rounded overflow-hidden shadow"
-          >
-            <div className="flex justify-center w-full max-h-56 overflow-hidden">
-              <img
-                src={event.image}
-                alt={event.title}
-                className="group-hover:scale-105 relative inset-0 w-full object-cover rounded transition-transform duration-200 "
-              />
-            </div>
-            <div className="p-6 flex flex-col gap-3 ">
-              <div className="flex justify-between  text-zinc-500">
-                <p className="flex gap-1">
-                  <span>
-                    <CalendarCheck />
-                  </span>
-                  {new Date(event.createdAt).toLocaleDateString()}
-                </p>
-                <p className="flex gap-1 ">
-                  <span>
-                    <SquareUserRound />
-                  </span>
-                  {event.creator}
-                </p>
-              </div>
-              <h1 className="font-bold text-2xl">{event.title}</h1>
-              <p
-                className={`${
-                  theme === "dark"
-                    ? "text-secondary/65"
-                    : "text-muted-foreground"
-                }`}
-              >
-                {event.description}
-              </p>
-              <div className="space-x-2">
-                <Button label="Read more" customClasses="md:py-5 w-full" />
-              </div>
-            </div>
-          </div>
-        ))}
+        {EventCard}
       </div>
     </section>
   );
