@@ -8,14 +8,15 @@ import {
     NavigationMenuLink,
 } from "@/lib";
 import { logo_dark, logo_light, navLinks } from "./data";
-import { Button, ListItem, Sheet, ThemeToggle } from "@/components";
+import { Button, ListItem, Sheet, ThemeToggle, UserMenu } from "@/components";
 import { Menu } from "lucide-react";
-import { useTheme } from "@/hooks";
+import { useTheme, useUser } from "@/hooks";
 import { useNavigate } from "react-router-dom";
 
 const UserNavbar = () => {
     const { theme } = useTheme();
     const navigate = useNavigate();
+    const { user } = useUser();
 
     return (
         <header className={`w-full border-b ${theme === "dark" ? "bg-bg-dark border-bg-dark-secondary" : "bg-white"} shadow sticky top-0 z-50`}>
@@ -107,11 +108,15 @@ const UserNavbar = () => {
 
                     <div className="flex items-center gap-3">
                         <ThemeToggle />
-                        <Button
-                            label="Get Started"
-                            customClasses="hidden md:block"
-                            onClick={() => navigate("/auth/register")}
-                        />
+                        {user?.username ? (
+                            <UserMenu user={user} />
+                        ) : (
+                            <Button
+                                label="Get Started"
+                                customClasses="hidden md:block"
+                                onClick={() => navigate("/auth/register")}
+                            />
+                        )}
                     </div>
                 </div>
 
