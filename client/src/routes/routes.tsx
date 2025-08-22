@@ -1,13 +1,13 @@
 
 import type { RouteObject } from "react-router-dom";
-import { ContactLayout, RootLayout } from "@/layouts";
-import { Developer, ErrorPage, Landing, Login, Register, Support,Event } from "@/pages";
+import { ContactLayout, RootLayout, UserLayout } from "@/layouts";
+import { Developer, ErrorPage, Landing, Login, Profile, Register, Support } from "@/pages";
 import { Navigate } from "react-router-dom";
 
 const authRoutes: RouteObject[] = [
     {
         path: "/auth",
-        element: <RootLayout />, // can be changed later
+        element: <RootLayout />, // can be changed if required
         children: [
             {
                 path: "login",
@@ -42,12 +42,28 @@ const contactRoutes: RouteObject[] = [
     }
 ]
 
+<<<<<<< HEAD
 const eventRoutes:RouteObject[] = [
     {
         path:"events",
         element:<RootLayout />,
         children:[
             { index: true, element: <Event /> },
+=======
+const userRoutes: RouteObject[] = [
+    {
+        path: "/user/:username",
+        element: <UserLayout />,
+        children: [
+            {
+                index: true,
+                element: <Navigate to="profile" replace />
+            },
+            {
+                path: "profile",
+                element: <Profile />,
+            }
+>>>>>>> 8ffaa11f833ee16ed9e09d838fcec1a7fea5610e
         ]
     }
 ]
@@ -69,7 +85,11 @@ const routes: RouteObject[] = [
     },
     ...authRoutes,
     ...contactRoutes,
+<<<<<<< HEAD
     ...eventRoutes
+=======
+    ...userRoutes,
+>>>>>>> 8ffaa11f833ee16ed9e09d838fcec1a7fea5610e
 ]
 
 export default routes;
