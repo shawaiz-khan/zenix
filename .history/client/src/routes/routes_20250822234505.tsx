@@ -1,7 +1,7 @@
 
 import type { RouteObject } from "react-router-dom";
 import { ContactLayout, RootLayout, UserLayout } from "@/layouts";
-import { Developer, ErrorPage, Landing, Login, Profile, Register, Support,Event } from "@/pages";
+import { Developer, ErrorPage, Landing, Login, Profile, Register, Support } from "@/pages";
 import { Navigate } from "react-router-dom";
 
 const authRoutes: RouteObject[] = [
@@ -62,12 +62,12 @@ const userRoutes: RouteObject[] = [
 
 const EventRoute: RouteObject[] = [
     {
-        path: "events",
+        path: "/",
         element:<RootLayout/>,
         children:[
             {
                 index:true,
-                element:<Event/>
+                element:
             }
         ]
     }
@@ -91,7 +91,6 @@ const routes: RouteObject[] = [
     ...authRoutes,
     ...contactRoutes,
     ...userRoutes,
-    ...EventRoute
 ]
 
 export default routes;

@@ -62,7 +62,7 @@ const userRoutes: RouteObject[] = [
 
 const EventRoute: RouteObject[] = [
     {
-        path: "events",
+        path: "/",
         element:<RootLayout/>,
         children:[
             {
@@ -91,7 +91,6 @@ const routes: RouteObject[] = [
     ...authRoutes,
     ...contactRoutes,
     ...userRoutes,
-    ...EventRoute
 ]
 
 export default routes;

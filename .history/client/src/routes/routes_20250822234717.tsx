@@ -62,7 +62,7 @@ const userRoutes: RouteObject[] = [
 
 const EventRoute: RouteObject[] = [
     {
-        path: "events",
+        path: "/",
         element:<RootLayout/>,
         children:[
             {
