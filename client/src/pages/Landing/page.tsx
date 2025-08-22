@@ -2,7 +2,6 @@ import { FAQ, Features, Hero } from "./sections";
 import { CallToAction } from "@/components";
 
 const Landing: React.FC = () => {
-
     return (
         <>
             <Hero />
