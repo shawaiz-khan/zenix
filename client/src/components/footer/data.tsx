@@ -2,23 +2,7 @@ export { default as logo_dark } from "@/assets/images/logos/logo-without-tag_bla
 export { default as logo_light } from "@/assets/images/logos/logo-without-tag_white.png";
 
 import { Twitter, Instagram, Linkedin, Github } from "lucide-react";
-import type { ReactNode } from "react";
-
-export interface FooterLink {
-    label: string;
-    href: string;
-}
-
-export interface FooterSection {
-    title: string;
-    links: FooterLink[];
-}
-
-export interface SocialLink {
-    href: string;
-    label: string;
-    icon: ReactNode;
-}
+import type { FooterSection, SocialLink } from "./types";
 
 export const footerLinks: FooterSection[] = [
     {

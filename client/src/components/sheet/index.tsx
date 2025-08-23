@@ -9,26 +9,7 @@ import {
     SheetTrigger
 } from "@/lib";
 import { Button } from "../ui";
-import type { ReactNode } from "react";
-
-interface ISheet {
-    triggerLabel?: string;
-    triggerIcon?: ReactNode;
-    triggerClasses?: string;
-    sheetHeader: {
-        headerTitle: string;
-        showHeaderTitle: boolean;
-        headerDescription?: string;
-        headerImg?: string;
-        headerImgClasses?: string;
-    };
-    children: ReactNode;
-    sheetFooter?: {
-        buttonLabel?: string;
-        onClick?: () => void;
-    }
-    theme?: "light" | "dark";
-}
+import type { ISheet } from "./types";
 
 const Sheet: React.FC<ISheet> = ({
     triggerLabel,

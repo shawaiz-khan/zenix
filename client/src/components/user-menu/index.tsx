@@ -1,14 +1,5 @@
 import { useTheme } from "@/hooks";
-
-interface IUser {
-    email: string;
-    username: string;
-    role: string;
-}
-
-interface UserMenuProps {
-    user: IUser;
-}
+import type { UserMenuProps } from "./types";
 
 const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
     const { theme } = useTheme();

@@ -1,19 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTheme } from "@/hooks";
 import { Button as ShadCnButton } from "@/lib";
 import { getVariantThemeClass } from "@/utils";
 import React from "react";
-import type { ReactNode } from "react"
-
-interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    label?: string;
-    variant?: "default" | "outline" | "secondary" | "destructive" | "ghost" | "link";
-    icon?: ReactNode;
-    iconDirection?: "right" | "left";
-    isDisabled?: boolean;
-    customClasses?: string;
-    onClick?: (parameter?: any) => void;
-}
+import type { IButton } from "./types";
 
 const Button = React.forwardRef<HTMLButtonElement, IButton>(
     (
