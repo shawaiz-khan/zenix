@@ -2,25 +2,12 @@
 import { Button, Card } from "@/components";
 import { useParams } from "react-router-dom";
 import { profileMetrics } from "./data";
-import { useUser } from "@/hooks";
-import { fetchUser } from "@/utils";
-import { useEffect } from "react";
 
 const Profile: React.FC = () => {
     const { username } = useParams<{ username: string }>();
-    const { user, setUser } = useUser();
+    console.log(username)
 
-    useEffect(() => {
-        const getUser = async () => {
-            if (username) {
-                const res = await fetchUser(username);
-                setUser(res);
-            }
-        };
-        getUser();
-    }, [username]);
-
-    const initials = user ? user.username.slice(0, 2).toUpperCase() : "U";
+    const initials = username ? username.slice(0, 2).toUpperCase() : "U";
 
     return (
         <main className="min-h-screen bg-bg-light p-5">
