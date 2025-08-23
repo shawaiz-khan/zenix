@@ -1,10 +1,6 @@
-export { default as hero_img } from "@/assets/images/hero/hero_mobile.png";
+import type { IFAQ, IFeatures } from "./types";
 
-// Features 
-interface IFeatures {
-    title: string;
-    description: string;
-}
+export { default as hero_img } from "@/assets/images/hero/hero_mobile.png";
 
 export const features: IFeatures[] = [
     {
@@ -32,12 +28,6 @@ export const features: IFeatures[] = [
         description: "Send instant updates and changes to all attendees, whether it’s a time shift or a last-minute note.",
     },
 ];
-
-// FAQ
-export interface IFAQ {
-    question: string;
-    answer: string;
-}
 
 export const faqs: IFAQ[] = [
     {

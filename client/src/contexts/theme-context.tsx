@@ -1,14 +1,6 @@
 import { notify } from "@/utils";
-import { createContext, useState, type ReactNode } from "react";
-
-interface IThemeContext {
-    theme: "light" | "dark";
-    toggleTheme: () => void;
-}
-
-interface ThemeProviderProps {
-    children: ReactNode;
-}
+import { createContext, useState} from "react";
+import type { IThemeContext, ThemeProviderProps } from "./types";
 
 const ThemeContext = createContext<IThemeContext | undefined>(undefined);
 

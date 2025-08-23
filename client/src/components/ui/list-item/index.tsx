@@ -1,12 +1,6 @@
 import { useTheme } from "@/hooks"
 import { NavigationMenuLink } from "@/lib"
-
-interface IListItem {
-    title: string
-    description?: string
-    href: string
-    customClasses?: string
-}
+import type { IListItem } from "./types";
 
 const ListItem: React.FC<IListItem> = ({
     title,

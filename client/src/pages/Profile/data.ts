@@ -1,7 +1,4 @@
-interface IProfile {
-    scheduledEvents: number;
-    attendedEvents: number;
-}
+import type { IProfile } from "./types";
 
 export const profileMetrics: IProfile[] = [
     { scheduledEvents: 19, attendedEvents: 10 },

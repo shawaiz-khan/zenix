@@ -1,19 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Input as ShadCnInput } from "@/lib";
 import Button from "../button";
-import type { InputHTMLAttributes } from "react";
 import { useTheme } from "@/hooks";
-
-interface IInput extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
-    label?: string;
-    button?: {
-        buttonLabel: string;
-        buttonVariant?: "default" | "outline" | "secondary" | "destructive" | "ghost" | "link";
-        buttonOnclick?: (value?: any) => void;
-    };
-    inputType?: string;
-    customClasses?: string;
-}
+import type { IInput } from "./types";
 
 const Input: React.FC<IInput> = ({
     label,

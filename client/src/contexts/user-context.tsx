@@ -1,16 +1,6 @@
 import { fetchUser } from "@/utils";
 import { createContext, useState, useEffect, type ReactNode } from "react";
-
-interface IUser {
-    username: string;
-    email: string;
-    role: string;
-}
-
-interface IUserContext {
-    user: IUser | null;
-    setUser: (value: IUser | null) => void;
-}
+import type { IUser, IUserContext } from "./types";
 
 const UserContext = createContext<IUserContext | undefined>(undefined);
 

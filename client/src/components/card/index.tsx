@@ -1,9 +1,4 @@
-import type { ReactNode } from "react";
-
-interface CardProps {
-    children: ReactNode;
-    customClasses?: string;
-}
+import type { CardProps } from "./types";
 
 const Card: React.FC<CardProps> = ({ children, customClasses }) => {
     return (
