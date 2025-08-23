@@ -1,10 +1,10 @@
 export interface IEventData {
     title: string;
     description: string;
-    categories: string;
+    categories: string[];
     creator: string;
     attendees: string[];
-    createdAt: Date;
+    createdAt: string;
     state: string;
     approval: string;
 }
